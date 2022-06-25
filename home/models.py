@@ -1,6 +1,6 @@
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
-from django.forms import TextInput, ModelForm
+from django.forms import TextInput, ModelForm, Textarea
 
 
 class Setting(models.Model):
@@ -12,8 +12,10 @@ class Setting(models.Model):
     keyword = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     company = models.CharField(max_length=50)
-    address = models.CharField(blank=True, max_length=100)
+    workinghours = RichTextUploadingField(blank=True, max_length=100)
+    contactcomment = RichTextUploadingField(blank=True, max_length=200)
     phone = models.CharField(blank=True, max_length=15)
+    whatsappcontact = models.CharField(blank=True, max_length=15)
     email = models.CharField(blank=True, max_length=50)
 
     smtpserver = models.CharField(blank=True, max_length=20)
@@ -22,9 +24,10 @@ class Setting(models.Model):
     smtpport = models.CharField(blank=True, max_length=5)
 
     icon = models.ImageField(blank=True, upload_to='images/')
-    facebook = models.CharField(blank=True, max_length=5)
-    instagram = models.CharField(blank=True, max_length=5)
-    twitter = models.CharField(blank=True, max_length=5)
+    facebook = models.CharField(blank=True, max_length=50)
+    instagram = models.CharField(blank=True, max_length=50)
+    twitter = models.CharField(blank=True, max_length=50)
+    youtube = models.CharField(blank=True, max_length=50)
 
     aboutus = RichTextUploadingField(blank=True, null=True)
     contact = RichTextUploadingField(blank=True, null=True)
@@ -37,11 +40,11 @@ class Setting(models.Model):
         return self.title
 
 
-class ContactFormMessage(models.Model):
+class ContactMessage(models.Model):
     STATUS = (
         ('New', 'New'),
-        ('True', 'True'),
-        ('False', 'False'),
+        ('Read', 'Read'),
+        ('Closed', 'Closed'),
     )
     name = models.CharField(max_length=30)
     subject = models.CharField(max_length=30)
@@ -59,11 +62,11 @@ class ContactFormMessage(models.Model):
 
 class ContactForm(ModelForm):
     class Meta:
-        model = ContactFormMessage()
+        model = ContactMessage
         fields = ['name', 'email', 'subject', 'message']
         widgets = {
-            'name': TextInput(attrs={'class': 'input', 'place_holder': 'Name & Surname'}),
-            'email': TextInput(attrs={'class': 'input', 'place_holder': 'Email Address'}),
-            'subject': TextInput(attrs={'class': 'input', 'place_holder': 'Subject'}),
-            'message': TextInput(attrs={'class': 'input', 'place_holder': 'Your Message', 'rows': '5'})
+            'name': TextInput(attrs={'class': 'input', 'placeholder': 'Name & Surname'}),
+            'email': TextInput(attrs={'class': 'input', 'placeholder': 'Email Address'}),
+            'subject': TextInput(attrs={'class': 'input', 'placeholder': 'Subject'}),
+            'message': Textarea(attrs={'class': 'input', 'placeholder': 'Your Message', 'rows': '5'})
         }

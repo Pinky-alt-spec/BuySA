@@ -7,10 +7,11 @@
               <div class="nav-panel__row">
                 <div class="nav-panel__departments">
                   <!-- .departments -->
-                  <div
-                    class="departments departments--opened departments--fixed"
-                    data-departments-fixed-by=".block-slideshow"
-                  >
+                    {% if page %}
+                  <div class="departments departments--opened departments--fixed" data-departments-fixed-by=".block-slideshow">
+                      {% else %}
+                      <div class="departments" data-departments-fixed-by="">
+                      {% endif %}
                     <div class="departments__body">
                       <div class="departments__links-wrapper">
                         <ul class="departments__links">
@@ -643,8 +644,9 @@
                 <div class="nav-panel__nav-links nav-links">
                   <ul class="nav-links__list">
                     <li class="nav-links__item nav-links__item--with-submenu">
-                      <a href="index.html"
-                        ><span
+                      <a href="/"
+                        >
+                          <span
                           >Home
                           <svg
                             class="nav-links__arrow"
@@ -657,17 +659,18 @@
                       ></a>
                       <div class="nav-links__menu">
                         <!-- .menu -->
-                        <ul class="menu menu--layout--classic">
-                          <li><a href="index.html">Home 1</a></li>
-                          <li><a href="index-2.html">Home 2</a></li>
-                        </ul>
+<!--                        <ul class="menu menu&#45;&#45;layout&#45;&#45;classic">-->
+<!--                          <li><a href="index.html">Home 1</a></li>-->
+<!--                          <li><a href="index-2.html">Home 2</a></li>-->
+<!--                        </ul>-->
                         <!-- .menu / end -->
                       </div>
                     </li>
                     <li class="nav-links__item nav-links__item--with-submenu">
-                      <a href="#"
-                        ><span
-                          >Megamenu
+                      <a href="/about"
+                        >
+                          <span
+                          >About Us
                           <svg
                             class="nav-links__arrow"
                             width="9px"
@@ -798,7 +801,8 @@
                     </li>
                     <li class="nav-links__item nav-links__item--with-submenu">
                       <a href="shop-grid-3-columns-sidebar.html"
-                        ><span
+                        >
+                          <span
                           >Shop
                           <svg
                             class="nav-links__arrow"
@@ -890,45 +894,47 @@
                         <!-- .menu / end -->
                       </div>
                     </li>
-                    <li class="nav-links__item nav-links__item--with-submenu">
-                      <a href="blog-classic.html"
-                        ><span
-                          >Blog
-                          <svg
-                            class="nav-links__arrow"
-                            width="9px"
-                            height="6px"
-                          >
-                            <use
-                              xlink:href="images/sprite.svg#arrow-rounded-down-9x6"
-                            ></use></svg></span
-                      ></a>
-                      <div class="nav-links__menu">
-                        <!-- .menu -->
-                        <ul class="menu menu--layout--classic">
-                          <li>
-                            <a href="blog-classic.html">Blog Classic</a>
-                          </li>
-                          <li><a href="blog-grid.html">Blog Grid</a></li>
-                          <li><a href="blog-list.html">Blog List</a></li>
-                          <li>
-                            <a href="blog-left-sidebar.html"
-                              >Blog Left Sidebar</a
-                            >
-                          </li>
-                          <li><a href="post.html">Post Page</a></li>
-                          <li>
-                            <a href="post-without-sidebar.html"
-                              >Post Without Sidebar</a
-                            >
-                          </li>
-                        </ul>
-                        <!-- .menu / end -->
-                      </div>
-                    </li>
+<!--                    <li class="nav-links__item nav-links__item&#45;&#45;with-submenu">-->
+<!--                      <a href="blog-classic.html"-->
+<!--                        >-->
+<!--                          <span-->
+<!--                          >Blog-->
+<!--                          <svg-->
+<!--                            class="nav-links__arrow"-->
+<!--                            width="9px"-->
+<!--                            height="6px"-->
+<!--                          >-->
+<!--                            <use-->
+<!--                              xlink:href="images/sprite.svg#arrow-rounded-down-9x6"-->
+<!--                            ></use></svg></span-->
+<!--                      ></a>-->
+<!--                      <div class="nav-links__menu">-->
+<!--                        &lt;!&ndash; .menu &ndash;&gt;-->
+<!--                        <ul class="menu menu&#45;&#45;layout&#45;&#45;classic">-->
+<!--                          <li>-->
+<!--                            <a href="blog-classic.html">Blog Classic</a>-->
+<!--                          </li>-->
+<!--                          <li><a href="blog-grid.html">Blog Grid</a></li>-->
+<!--                          <li><a href="blog-list.html">Blog List</a></li>-->
+<!--                          <li>-->
+<!--                            <a href="blog-left-sidebar.html"-->
+<!--                              >Blog Left Sidebar</a-->
+<!--                            >-->
+<!--                          </li>-->
+<!--                          <li><a href="post.html">Post Page</a></li>-->
+<!--                          <li>-->
+<!--                            <a href="post-without-sidebar.html"-->
+<!--                              >Post Without Sidebar</a-->
+<!--                            >-->
+<!--                          </li>-->
+<!--                        </ul>-->
+<!--                        &lt;!&ndash; .menu / end &ndash;&gt;-->
+<!--                      </div>-->
+<!--                    </li>-->
                     <li class="nav-links__item nav-links__item--with-submenu">
                       <a href="#"
-                        ><span
+                        >
+                          <span
                           >Pages
                           <svg
                             class="nav-links__arrow"
@@ -942,7 +948,7 @@
                       <div class="nav-links__menu">
                         <!-- .menu -->
                         <ul class="menu menu--layout--classic">
-                          <li><a href="about-us.html">About Us</a></li>
+                          <li><a href="/about-us.html">About Us</a></li>
                           <li><a href="contact-us.html">Contact Us</a></li>
                           <li>
                             <a href="contact-us-alt.html">Contact Us Alt</a>
@@ -961,11 +967,11 @@
                       </div>
                     </li>
                     <li class="nav-links__item">
-                      <a href="contact-us.html"><span>Contact Us</span></a>
+                      <a href="/contact"><span>Contact Us</span></a>
                     </li>
                     <li class="nav-links__item">
-                      <a href="https://themeforest.net/user/kos9/portfolio"
-                        ><span>Buy Theme</span></a
+                      <a href="/terms&conditions"
+                        ><span>Terms And Conditions</span></a
                       >
                     </li>
                   </ul>
@@ -976,7 +982,7 @@
                     <a href="wishlist.html" class="indicator__button"
                       ><span class="indicator__area"
                         ><svg width="20px" height="20px">
-                          <use xlink:href="images/sprite.svg#heart-20"></use>
+                          <use xlink:href="static/images/sprite.svg#heart-20"></use>
                         </svg>
                         <span class="indicator__value">0</span></span
                       ></a
@@ -986,7 +992,7 @@
                     <a href="cart.html" class="indicator__button"
                       ><span class="indicator__area"
                         ><svg width="20px" height="20px">
-                          <use xlink:href="images/sprite.svg#cart-20"></use>
+                          <use xlink:href="static/images/sprite.svg#cart-20"></use>
                         </svg>
                         <span class="indicator__value">3</span></span
                       ></a
@@ -999,7 +1005,7 @@
                             <div class="dropcart__product-image">
                               <a href="product.html"
                                 ><img
-                                  src="images/products/product-1.jpg"
+                                  src="static/images/products/product-1.jpg"
                                   alt=""
                               /></a>
                             </div>
@@ -1030,7 +1036,7 @@
                             >
                               <svg width="10px" height="10px">
                                 <use
-                                  xlink:href="images/sprite.svg#cross-10"
+                                  xlink:href="static/images/sprite.svg#cross-10"
                                 ></use>
                               </svg>
                             </button>
@@ -1039,7 +1045,7 @@
                             <div class="dropcart__product-image">
                               <a href="product.html"
                                 ><img
-                                  src="images/products/product-2.jpg"
+                                  src="static/images/products/product-2.jpg"
                                   alt=""
                               /></a>
                             </div>
@@ -1066,7 +1072,7 @@
                             >
                               <svg width="10px" height="10px">
                                 <use
-                                  xlink:href="images/sprite.svg#cross-10"
+                                  xlink:href="static/images/sprite.svg#cross-10"
                                 ></use>
                               </svg>
                             </button>
@@ -1075,7 +1081,7 @@
                             <div class="dropcart__product-image">
                               <a href="product.html"
                                 ><img
-                                  src="images/products/product-5.jpg"
+                                  src="static/images/products/product-5.jpg"
                                   alt=""
                               /></a>
                             </div>
@@ -1104,7 +1110,7 @@
                             >
                               <svg width="10px" height="10px">
                                 <use
-                                  xlink:href="images/sprite.svg#cross-10"
+                                  xlink:href="static/images/sprite.svg#cross-10"
                                 ></use>
                               </svg>
                             </button>

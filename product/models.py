@@ -3,16 +3,16 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.utils.safestring import mark_safe
 from django.db import models
+from mptt.fields import TreeForeignKey
+from mptt.models import MPTTModel
 
 
-# Create your models here.
-
-class Category(models.Model):
+class Category(MPTTModel):
     STATUS = (
         ('True', 'True'),
         ('False', 'False'),
     )
-    parent = models.ForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
+    parent = TreeForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
     keyword = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
@@ -26,15 +26,19 @@ class Category(models.Model):
         order_insertion_by = ['title']
 
     def __str__(self):
-        full_path = [self.title]
-        k = self.parent
-        while k is not None:
-            full_path.append(k.title)
-            k = k.parent
-        return ' / '.join(full_path[::-1])
+        return self.title
+
+    # def __str__(self):
+    #     full_path = [self.title]
+    #     k = self.parent
+    #     while k is not None:
+    #         full_path.append(k.title)
+    #         k = k.parent
+    #     return ' / '.join(full_path[::-1])
 
     def image_tag(self):
         return mark_safe('<img src="{}" height="50" />'.format(self.image.url))
+
     image_tag.short_description = 'Image'
 
 
@@ -86,10 +90,11 @@ class Product(models.Model):
 
     def image_tag(self):
         return mark_safe('<img src="{}" height="50" />'.format(self.image.url))
+
     image_tag.short_description = 'Image'
 
-    def rating_tag(self):
-        return mark_safe((Category.status))
+    # def rating_tag(self):
+    #     return mark_safe((Category.status))
 
 
 class Images(models.Model):
@@ -125,8 +130,8 @@ class Comment(models.Model):
     def __str__(self):
         return self.subject
 
-
-class CommentForm(ModelForm):
-    class Meta:
-        model = Comment()
-        fields = ['subject', 'comment', 'rate']
+#
+# class CommentForm(ModelForm):
+#     class Meta:
+#         model = Comment()
+#         fields = ['subject', 'comment', 'rate']
