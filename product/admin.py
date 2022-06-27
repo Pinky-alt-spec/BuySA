@@ -1,7 +1,8 @@
 from django.contrib import admin
 from mptt.admin import DraggableMPTTAdmin
+from django_mptt_admin.admin import DjangoMpttAdmin
 
-from .models import *
+from product.models import *
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -36,12 +37,10 @@ class CategoryAdmin2(DraggableMPTTAdmin):
 
     def related_products_count(self, instance):
         return instance.products_count
-
     related_products_count.short_description = 'Related products (for this specific category)'
 
     def related_products_cumulative_count(self, instance):
         return instance.products_cumulative_count
-
     related_products_cumulative_count.short_description = 'Related products (in tree)'
 
 

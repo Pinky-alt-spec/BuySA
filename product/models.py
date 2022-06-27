@@ -13,7 +13,7 @@ class Category(MPTTModel):
         ('False', 'False'),
     )
     parent = TreeForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=50)
     keyword = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     image = models.ImageField(blank=True, upload_to='images/')
@@ -22,11 +22,11 @@ class Category(MPTTModel):
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
-    class MPTTMeta:
-        order_insertion_by = ['title']
-
     def __str__(self):
         return self.title
+
+    class MPTTMeta:
+        order_insertion_by = ['title']
 
     # def __str__(self):
     #     full_path = [self.title]
@@ -89,7 +89,9 @@ class Product(models.Model):
         return self.title
 
     def image_tag(self):
-        return mark_safe('<img src="{}" height="50" />'.format(self.image.url))
+        if self.image_tag:
+            return mark_safe('<img src="{}" height="50" />'.format(self.image.url))
+        return ''
 
     image_tag.short_description = 'Image'
 

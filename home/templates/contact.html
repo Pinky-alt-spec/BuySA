@@ -63,12 +63,12 @@
                                 <h4 class="contact-us__header card-title">
                                     Leave us a Message
                                 </h4>
-                                  {% if messages %}
-                                    {% for message in messages %}
-                                        <div class="alert alert-{{ message.tags }}" role="alert">
-                                          {{ message }}
-                                        </div>
-                                    {% endfor %}
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            <div class="alert alert-{{ message.tags }}" role="alert">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
                                   {% endif %}
 
                                 <form action="" method="post">
