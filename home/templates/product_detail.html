@@ -456,8 +456,8 @@
                                 <img src="/static/images/avatars/avatar-1.jpg" alt="" />
                               </div>
                               <div class="review__content">
-                                <div class="review__author">{{ i.user.first_name }}</div>
-                                <div class="review__author">{{ i.subject }}</div>
+                                <div class="review__author">{{ i.user.first_name }} {{ i.user.last_name }}</div>
+                                <div class="review__author"><br />{{ i.subject }}</div>
                                 <div class="review__rating">
                                   <div class="rating">
                                     <div class="rating__body">
@@ -614,11 +614,11 @@
                             <div class="form-group col-md-4">
                               <label for="review-stars">Review Stars</label>
                               <select id="review-stars" class="form-control">
-                                <option name="rate">5 Stars Rating</option>
-                                <option name="rate">4 Stars Rating</option>
-                                <option name="rate">3 Stars Rating</option>
-                                <option name="rate">2 Stars Rating</option>
-                                <option name="rate">1 Stars Rating</option>
+                                <option name="rate" value="5">5 Stars Rating</option>
+                                <option name="rate" value="4">4 Stars Rating</option>
+                                <option name="rate" value="3">3 Stars Rating</option>
+                                <option name="rate" value="2">2 Stars Rating</option>
+                                <option name="rate" value="1">1 Stars Rating</option>
                               </select>
                             </div>
                           </div>

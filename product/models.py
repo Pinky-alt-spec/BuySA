@@ -73,15 +73,28 @@ class Product(models.Model):
         ('True', 'True'),
         ('False', 'False'),
     )
+    AVAILABILITY = (
+        ('In Stock', 'In Stock'),
+        ('Out Of Stock', 'Out Of Stock'),
+    )
+    CONDITION = (
+        ('New', 'New'),
+        ('Hot', 'Hot'),
+        ('Sale', 'Sale'),
+    )
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
     keyword = models.CharField(max_length=30)
     description = RichTextUploadingField(blank=True, null=True)
     information = RichTextUploadingField(blank=True, null=True)
+    small_product_details = RichTextUploadingField(blank=True, null=True)
     slug = models.SlugField(null=False, unique=True)
     image = models.ImageField(blank=True, upload_to='images/')
     price = models.FloatField()
     status = models.CharField(max_length=10, choices=STATUS)
+    availability = models.CharField(max_length=15, choices=AVAILABILITY)
+    condition = models.CharField(max_length=10, choices=CONDITION)
+
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
@@ -138,7 +151,7 @@ class Comment(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     subject = models.CharField(max_length=50, blank=True)
-    comment = models.TextField(max_length=50, blank=True)
+    comment = models.TextField(max_length=250, blank=True)
     rate = models.IntegerField(default=5)
     status = models.CharField(max_length=10, choices=STATUS, default='New')
     ip = models.CharField(max_length=20, blank=True)
