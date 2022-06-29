@@ -6,6 +6,7 @@
         <div class="row">
             <div class="col-12 col-lg-9 offset-lg-3">
                 <div class="block-slideshow__body">
+
                     <div class="owl-carousel">
                         <a class="block-slideshow__slide" href="#">
                             <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('static/images/slides/slide-1.jpg');"></div>
@@ -35,10 +36,11 @@
                                     elit.<br />Etiam pharetra laoreet dui quis molestie.
                                 </div>
                                 <div class="block-slideshow__slide-button">
-                                    <span class="btn btn-primary btn-lg">Shop Now</span>
+                                    <span onclick="/product/{{ ps.id }}/{{ ps.slug }}" class="btn btn-primary btn-lg">Shop Now</span>
                                 </div>
                             </div>
                         </a>
+
                         <a class="block-slideshow__slide" href="#">
                             <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('static/images/slides/slide-3.jpg');"></div>
                             <div class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url('static/images/slides/slide-3-mobile.jpg');"></div>
@@ -55,8 +57,10 @@
                                 </div>
                             </div>
                         </a>
+
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

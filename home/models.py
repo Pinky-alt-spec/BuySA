@@ -68,5 +68,5 @@ class ContactForm(ModelForm):
             'name': TextInput(attrs={'class': 'input', 'placeholder': 'Name & Surname'}),
             'email': TextInput(attrs={'class': 'input', 'placeholder': 'Email Address'}),
             'subject': TextInput(attrs={'class': 'input', 'placeholder': 'Subject'}),
-            'message': Textarea(attrs={'class': 'input', 'placeholder': 'Your Message', 'rows': '5'})
+            'message': Textarea(attrs={'class': 'input', 'placeholder': 'Your Message', 'rows': '5'}),
         }
