@@ -1,6 +1,10 @@
+import json
+
 from django.contrib import messages
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+
+from home.forms import SearchForm
 from home.models import *
 from product.models import *
 
@@ -79,3 +83,30 @@ def category_products(request, id, slug):
         'products': products,
     }
     return render(request, 'category_products.html', context)
+
+
+def search(request):
+    query = request.GET.get('query')
+    product = Product.objects.filter(title__icontains=query)
+
+    context = {
+        'product': product,
+    }
+    return render(request, 'search_products.html', context)
+
+
+def product_detail(request, id, slug):
+    category = Category.objects.all()
+    product = Product.objects.get(pk=id)
+    images = Images.objects.filter(product_id=id)
+    comments = Comment.objects.filter(product_id=id, status="True")
+
+    context = {
+        'category': category,
+        'product': product,
+        'images': images,
+        'comments': comments,
+    }
+    return render(request, 'product_detail.html', context)
+
+

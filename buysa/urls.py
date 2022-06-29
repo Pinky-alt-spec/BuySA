@@ -25,10 +25,13 @@ urlpatterns = [
     path('home/', include('home.urls')),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
+    path('search/', views.search, name='search'),
+    # path('search_auto/', views.search_auto, name='search_auto'),
     path('product/', include('product.urls')),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('category/<int:id>/<slug:slug>', views.category_products, name='category_products'),
+    path('product/<int:id>/<slug:slug>', views.product_detail, name='product_detail'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

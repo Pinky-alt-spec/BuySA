@@ -38,10 +38,12 @@ class CategoryAdmin2(DraggableMPTTAdmin):
 
     def related_products_count(self, instance):
         return instance.products_count
+
     related_products_count.short_description = 'Related products (for this specific category)'
 
     def related_products_cumulative_count(self, instance):
         return instance.products_cumulative_count
+
     related_products_cumulative_count.short_description = 'Related products (in tree)'
 
 
@@ -59,8 +61,9 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['subject', 'comment', 'product', 'user', 'status']
+    list_display = ['subject', 'comment', 'status', 'create_at']
     list_filter = ['status']
+    readonly_fields = ('subject', 'comment', 'ip', 'product', 'user', 'rate')
 
 
 admin.site.register(Category, CategoryAdmin2)
