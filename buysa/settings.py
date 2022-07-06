@@ -41,6 +41,20 @@ INSTALLED_APPS = [
     'ckeditor',
     'django_mptt_admin',
     'mptt',
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail',
+
+    'modelcluster',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'buysa.urls'
@@ -119,7 +134,9 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
-
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+WAGTAIL_SITE_NAME = 'BuySA'
+WAGTAILADMIN_BASE_URL = '/wagtail'
 # ...
 SITE_ID = 1
 
