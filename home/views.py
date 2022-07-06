@@ -40,38 +40,37 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
-
-def about(request):
+def shop(request):
     setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
+    product_featured = Product.objects.all().order_by('?')[:16]
+    product_best_seller = Product.objects.all().order_by('id')[:6]
+    product_popular = Product.objects.all().order_by('id')[:6]
+    product_new_arrival = Product.objects.all().order_by('-id')[:16]
+    product_top_related = Product.objects.all().order_by('?')[:9]
+    bottom_product_top_related = Product.objects.all().order_by('?')[:3]
+    product_featured_item = Product.objects.all().order_by('-id')[:1]
+    special_offer = Product.objects.all().order_by('id')[:3]
+    best_bottom = Product.objects.all().order_by('?')[:3]
+
+    page = "home"
 
     context = {
-        'setting': setting
-    }
-    return render(request, 'about.html', context)
-
-
-def contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            data = ContactMessage()
-            data.name = form.cleaned_data['name']
-            data.subject = form.cleaned_data['subject']
-            data.email = form.cleaned_data['email']
-            data.message = form.cleaned_data['message']
-            data.ip = request.META.get('REMOTE_ADDR')
-            data.save()
-            messages.success(request, "Your message has been sent, we will be in touch with you shortly")
-            return HttpResponseRedirect('/contact')
-
-    setting = Setting.objects.get(pk=1)
-    form = ContactForm
-
-    context = {
+        'page': page,
         'setting': setting,
-        'form': form,
+        'category': category,
+        'product_featured': product_featured,
+        'product_best_seller': product_best_seller,
+        'product_popular': product_popular,
+        'product_new_arrival': product_new_arrival,
+        'product_top_related': product_top_related,
+        'bottom_product_top_related': bottom_product_top_related,
+        'product_featured_item': product_featured_item,
+        'special_offer': special_offer,
+        'best_bottom': best_bottom,
     }
-    return render(request, 'contact.html', context)
+    return render(request, 'index.html', context)
+
 
 
 def category_products(request, id, slug):
@@ -109,4 +108,57 @@ def product_detail(request, id, slug):
     }
     return render(request, 'product_detail.html', context)
 
+# Pages 
+
+def tcs(request):
+    return render(request, "pages/tcs.html")
+
+def fof(request):
+    return render(request, "pages/404.html")
+
+def faq(request):
+    return render(request, "pages/faq.html")
+
+def about(request):
+    setting = Setting.objects.get(pk=1)
+
+    context = {
+        'setting': setting
+    }
+    return render(request, 'pages/about.html', context)
+
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            data = ContactMessage()
+            data.name = form.cleaned_data['name']
+            data.subject = form.cleaned_data['subject']
+            data.email = form.cleaned_data['email']
+            data.message = form.cleaned_data['message']
+            data.ip = request.META.get('REMOTE_ADDR')
+            data.save()
+            messages.success(request, "Your message has been sent, we will be in touch with you shortly")
+            return HttpResponseRedirect('/contact')
+
+    setting = Setting.objects.get(pk=1)
+    form = ContactForm
+
+    context = {
+        'setting': setting,
+        'form': form,
+    }
+    return render(request, 'pages/contact.html', context)
+
+# Shop
+
+def cart(request):
+    return render(request, "shop/cart.html")
+
+def checkout(request):
+    return render(request, "shop/checkout.html")
+    
+def wishlist(request):
+    return render(request, "shop/wishlist.html")
 
