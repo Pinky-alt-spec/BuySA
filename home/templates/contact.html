@@ -57,9 +57,19 @@
                                     </div>
                                     <div class="col-12 col-lg-6">
                                         <h4 class="contact-us__header card-title">Leave us a Message</h4>
-                                        <form>
+
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                                <div class="alert alert-{{ message.tags }}" role="alert">
+                                                    {{ message }}
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        <form action="" method="post">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
+                                                    {% csrf_token %}
                                                     <label for="form-name">Your Name</label> 
                                                     <input name="name" type="text" id="form-name" class="form-control" placeholder="Your Name">
                                                 </div>

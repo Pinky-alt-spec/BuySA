@@ -1,5 +1,7 @@
 {% load static %}
 
+{% load mptt_tags %}
+
 <header class="site__header d-lg-block d-none">
     <div class="site-header">
         <div class="site-header__nav-panel">
@@ -21,8 +23,9 @@
                                     <div class="departments__links-wrapper">
                                         <div class="departments__submenus-container"></div>
                                         <ul class="departments__links">
+                                            {% recursetree category %}
                                             <li class="departments__item"><a class="departments__item-link"
-                                                    href="">Power Tools <svg class="departments__item-arrow"
+                                                    href="/category/{{ node.id }}/{{ node.slug }}">{{ node.title }}<svg class="departments__item-arrow"
                                                         width="6px" height="9px">
                                                         <use
                                                             xlink:href="static/images/sprite.svg#arrow-rounded-right-6x9">
@@ -36,17 +39,20 @@
                                                             style="background-image: url('static/images/megamenu/megamenu-1.jpg');">
                                                             <div class="row">
                                                                 <div class="col-3">
+                                                                    {% if not node.is_leaf_node %}
                                                                     <ul
                                                                         class="megamenu__links megamenu__links--level--0">
+
                                                                         <li
                                                                             class="megamenu__item megamenu__item--with-submenu">
                                                                             <a href="">Power Tools</a>
+
                                                                             <ul
                                                                                 class="megamenu__links megamenu__links--level--1">
                                                                                 <li class="megamenu__item"><a
-                                                                                        href="">Engravers</a>
+                                                                                        href="">{{ children }}</a>
                                                                                 </li>
-                                                                                <li class="megamenu__item"><a
+                                                                                {% comment %} <li class="megamenu__item"><a
                                                                                         href="">Drills</a></li>
                                                                                 <li class="megamenu__item"><a
                                                                                         href="">Wrenches</a>
@@ -62,20 +68,24 @@
                                                                                         Tools</a></li>
                                                                                 <li class="megamenu__item"><a
                                                                                         href="">Milling
-                                                                                        Cutters</a></li>
+                                                                                        Cutters</a></li> {% endcomment %}
                                                                             </ul>
+
                                                                         </li>
-                                                                        <li class="megamenu__item"><a
+
+                                                                        {% comment %} <li class="megamenu__item"><a
                                                                                 href="">Workbenches</a></li>
                                                                         <li class="megamenu__item"><a
                                                                                 href="">Presses</a></li>
                                                                         <li class="megamenu__item"><a
                                                                                 href="">Spray Guns</a></li>
                                                                         <li class="megamenu__item"><a
-                                                                                href="">Riveters</a></li>
+                                                                                href="">Riveters</a></li> {% endcomment %}
+                                                                                
                                                                     </ul>
+                                                                    {% endif %}
                                                                 </div>
-                                                                <div class="col-3">
+                                                                {% comment %} <div class="col-3">
                                                                     <ul
                                                                         class="megamenu__links megamenu__links--level--0">
                                                                         <li
@@ -121,8 +131,8 @@
                                                                             </ul>
                                                                         </li>
                                                                     </ul>
-                                                                </div>
-                                                                <div class="col-3">
+                                                                </div> {% endcomment %}
+                                                                {% comment %} <div class="col-3">
                                                                     <ul
                                                                         class="megamenu__links megamenu__links--level--0">
                                                                         <li
@@ -150,8 +160,8 @@
                                                                             </ul>
                                                                         </li>
                                                                     </ul>
-                                                                </div>
-                                                                <div class="col-3">
+                                                                </div> {% endcomment %}
+                                                                {% comment %} <div class="col-3">
                                                                     <ul
                                                                         class="megamenu__links megamenu__links--level--0">
                                                                         <li
@@ -174,12 +184,14 @@
                                                                             </ul>
                                                                         </li>
                                                                     </ul>
-                                                                </div>
+                                                                </div> {% endcomment %}
                                                             </div>
                                                         </div>
                                                     </div><!-- .megamenu / end -->
                                                 </div>
                                             </li>
+                                            {% endrecursetree %}
+
                                             <li class="departments__item"><a class="departments__item-link"
                                                     href="">Hand Tools <svg class="departments__item-arrow"
                                                         width="6px" height="9px">
@@ -564,12 +576,12 @@
                                                     href="">Measurement</a></li>
                                             <li class="departments__item"><a class="departments__item-link"
                                                     href="">Clothes & PPE</a></li>
-                                            <li class="departments__item"><a class="departments__item-link"
+                                            {% comment %} <li class="departments__item"><a class="departments__item-link"
                                                     href="">Plumbing</a></li>
                                             <li class="departments__item"><a class="departments__item-link"
                                                     href="">Storage & Organization</a></li>
                                             <li class="departments__item"><a class="departments__item-link"
-                                                    href="">Welding & Soldering</a></li>
+                                                    href="">Welding & Soldering</a></li> {% endcomment %}
                                         </ul>
                                     </div>
                                 </div><button class="departments__button"><svg class="departments__button-icon"
