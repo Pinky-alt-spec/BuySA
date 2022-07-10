@@ -12,27 +12,43 @@ class Setting(models.Model):
     keyword = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     company = models.CharField(max_length=50)
-    workinghours = RichTextUploadingField(blank=True, max_length=100)
-    contactcomment = RichTextUploadingField(blank=True, max_length=200)
-    phone = models.CharField(blank=True, max_length=15)
-    whatsappcontact = models.CharField(blank=True, max_length=15)
+    
+    phone = models.CharField(blank=True, max_length=17)
+    whatsappcontact = models.CharField(blank=True, max_length=17)
     email = models.CharField(blank=True, max_length=50)
-
     smtpserver = models.CharField(blank=True, max_length=20)
     smtpemail = models.CharField(blank=True, max_length=20)
     smtppassword = models.CharField(blank=True, max_length=10)
     smtpport = models.CharField(blank=True, max_length=5)
-
-    icon = models.ImageField(blank=True, upload_to='images/')
+    
     facebook = models.CharField(blank=True, max_length=50)
     instagram = models.CharField(blank=True, max_length=50)
     twitter = models.CharField(blank=True, max_length=50)
     youtube = models.CharField(blank=True, max_length=50)
-
+    status = models.CharField(max_length=10, choices=STATUS)
+    
+    name1 = models.CharField(blank=True, max_length=50)
+    name2 = models.CharField(blank=True, max_length=50)
+    name3 = models.CharField(blank=True, max_length=50)
+    position1 = models.CharField(blank=True, max_length=50)
+    position2 = models.CharField(blank=True, max_length=50)
+    position3 = models.CharField(blank=True, max_length=50)
+    
+    icon = models.ImageField(blank=True, upload_to='images/')
+    
     aboutus = RichTextUploadingField(blank=True, null=True)
     contact = RichTextUploadingField(blank=True, null=True)
-
-    status = models.CharField(max_length=10, choices=STATUS)
+    workinghours = RichTextUploadingField(blank=True, max_length=100)
+    contactcomment = RichTextUploadingField(blank=True, max_length=200)
+    
+    slide1 = RichTextUploadingField(blank=True, max_length=200)
+    slide2 = RichTextUploadingField(blank=True, max_length=200)
+    slide3 = RichTextUploadingField(blank=True, max_length=200)
+    slidecomment1 =RichTextUploadingField(blank=True, max_length=200)
+    slidecomment2 = RichTextUploadingField(blank=True, max_length=200)
+    slidecomment3 =  RichTextUploadingField(blank=True, max_length=200)
+    
+    
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 

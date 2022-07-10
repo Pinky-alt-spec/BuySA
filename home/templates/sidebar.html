@@ -9,8 +9,14 @@
                     <div class="nav-panel__row">
                         <div class="nav-panel__departments">
                             <!-- .departments -->
+
+                            {% if page %}
                             <div class="departments departments--open departments--fixed"
                                 data-departments-fixed-by=".block-slideshow">
+                                {% else %}
+                                <div class="departments" data-departments-fixed-by="">
+                                    {% endif %}
+
                                 <div class="departments__body">
                                     <div class="departments__links-wrapper">
                                         <div class="departments__submenus-container"></div>
@@ -578,7 +584,7 @@
                         <div class="nav-panel__nav-links nav-links">
                             <ul class="nav-links__list">
                                 <li class="nav-links__item nav-links__item--has-submenu"><a
-                                        class="nav-links__item-link" href="index.html">
+                                        class="nav-links__item-link" href="/">
                                         <div class="nav-links__item-body">Home <svg
                                                 class="nav-links__item-arrow" width="9px" height="6px">
                                                 <use xlink:href="static/images/sprite.svg#arrow-rounded-down-9x6">
@@ -625,8 +631,8 @@
                                     </div>
                                 </li>
                                 <li class="nav-links__item nav-links__item--has-submenu"><a
-                                        class="nav-links__item-link" href="">
-                                        <div class="nav-links__item-body">Megamenu <svg
+                                        class="nav-links__item-link" href="/about">
+                                        <div class="nav-links__item-body">About Us<svg
                                                 class="nav-links__item-arrow" width="9px" height="6px">
                                                 <use xlink:href="static/images/sprite.svg#arrow-rounded-down-9x6">
                                                 </use>
@@ -984,8 +990,8 @@
                                     </div>
                                 </li>
                                 <li class="nav-links__item nav-links__item--has-submenu"><a
-                                        class="nav-links__item-link" href="">
-                                        <div class="nav-links__item-body">Pages <svg
+                                        class="nav-links__item-link" href="/contact">
+                                        <div class="nav-links__item-body">Contact Us<svg
                                                 class="nav-links__item-arrow" width="9px" height="6px">
                                                 <use xlink:href="static/images/sprite.svg#arrow-rounded-down-9x6">
                                                 </use>
