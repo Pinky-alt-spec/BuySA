@@ -3051,14 +3051,14 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   background: transparent;
   cursor: pointer;
   padding: 0;
-  color: inherit;
+  color: #fff;
   fill: currentColor;
 }
 .indicator__button:focus {
   outline: none;
 }
 .indicator__button:hover {
-  color: inherit;
+  color: #fff;
 }
 .indicator__area {
   background: transparent;
@@ -3282,7 +3282,6 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 .mobile-header__panel {
   background: #0e8eb3;
-  box-shadow: 0 1px rgba(0, 0, 0, 0.04), inset 0 -1px rgba(0, 0, 0, 0.04);
   color: #3d464d;
   position: relative;
 }
@@ -3303,7 +3302,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   height: 36px;
   border-radius: 2px;
   background: transparent;
-  fill: #3d464d;
+  fill: #fff;
   border: none;
   padding: 0;
   margin: 0;
